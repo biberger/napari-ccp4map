@@ -26,6 +26,13 @@ You can install `napari-ccp4map` via [pip]:
 
     pip install napari-ccp4map
 
+## Usage
+If the plugin was installed correctly, it will pop up in a napari window under Plugins->Install/Uninstall Plugins.
+You can either drag&drop filed into the window to read them, or search for a folder/file using Ctrl+O.
+
+## How it works
+This plugin simply reads a file and allows [gemmi](https://github.com/project-gemmi/gemmi) to interact with it. Then, numpy turns the file into an array.
+
 ## Contributing
 
 Contributions are very welcome. Tests can be run with [tox], please ensure
