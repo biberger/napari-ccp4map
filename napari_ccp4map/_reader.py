@@ -29,7 +29,7 @@ def napari_get_reader(path):
         If the path is a recognized format, return a function that accepts the
         same path or list of paths, and returns a list of layer data tuples.
     """
-    if isinstance(path, str) and path.endswith(".map"):
+    if isinstance(path, str) and path.endswith((".map",".ccp4")):
         return map_reader
 
 
