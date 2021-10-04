@@ -3,7 +3,6 @@ from pathlib import Path
 
 def test_reader(tmp_path):
     ccp4_file = Path(__file__).parent / "5wkd.ccp4"
-    #my_test_file = "/tests/5wkd.ccp4"
 
     # try to read it back in
     reader = napari_get_reader(ccp4_file)
