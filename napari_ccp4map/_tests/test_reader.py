@@ -6,6 +6,7 @@ def test_reader(tmp_path):
 
     # try to read it back in
     reader = napari_get_reader(my_test_file)
+    assert reader is not None
     assert callable(reader)
 
     # make sure we're delivering the right format
