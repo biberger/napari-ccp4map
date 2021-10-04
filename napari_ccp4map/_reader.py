@@ -10,6 +10,7 @@ Replace code below accordingly.  For complete documentation see:
 https://napari.org/docs/dev/plugins/for_plugin_developers.html
 """
 import numpy as np
+import gemmi
 from napari_plugin_engine import napari_hook_implementation
 
 
@@ -28,21 +29,11 @@ def napari_get_reader(path):
         If the path is a recognized format, return a function that accepts the
         same path or list of paths, and returns a list of layer data tuples.
     """
-    if isinstance(path, list):
-        # reader plugins may be handed single path, or a list of paths.
-        # if it is a list, it is assumed to be an image stack...
-        # so we are only going to look at the first file.
-        path = path[0]
-
-    # if we know we cannot read the file, we immediately return None.
-    if not path.endswith(".npy"):
-        return None
-
-    # otherwise we return the *function* that can read ``path``.
-    return reader_function
+    if isinstance(path, str) and path.endswith(".map"):
+        return map_reader
 
 
-def reader_function(path):
+def map_reader(path: str):
     """Take a path or list of paths and return a list of LayerData tuples.
 
     Readers are expected to return data as a list of tuples, where each tuple
@@ -64,15 +55,11 @@ def reader_function(path):
         Both "meta", and "layer_type" are optional. napari will default to
         layer_type=="image" if not provided
     """
-    # handle both a string and a list of strings
-    paths = [path] if isinstance(path, str) else path
-    # load all files into array
-    arrays = [np.load(_path) for _path in paths]
-    # stack arrays into single array
-    data = np.squeeze(np.stack(arrays))
+    ccp4_map = gemmi.read_ccp4_map(path)
+    vol = np.array(ccp4_map.grid, copy=False)
 
     # optional kwargs for the corresponding viewer.add_* method
     add_kwargs = {}
 
     layer_type = "image"  # optional, default is "image"
-    return [(data, add_kwargs, layer_type)]
+    return [(vol, add_kwargs, layer_type)]
