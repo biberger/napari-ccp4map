@@ -1,6 +1,7 @@
 # napari-ccp4map
 
 [![License](https://img.shields.io/pypi/l/napari-ccp4map.svg?color=green)](https://github.com/biberger/napari-ccp4map/raw/master/LICENSE)
+[![DOI](https://zenodo.org/badge/413461420.svg)](https://zenodo.org/badge/latestdoi/413461420)
 [![PyPI](https://img.shields.io/pypi/v/napari-ccp4map.svg?color=green)](https://pypi.org/project/napari-ccp4map)
 [![Python Version](https://img.shields.io/pypi/pyversions/napari-ccp4map.svg?color=green)](https://python.org)
 [![tests](https://github.com/biberger/napari-ccp4map/workflows/tests/badge.svg)](https://github.com/biberger/napari-ccp4map/actions)
@@ -42,6 +43,26 @@ the coverage at least stays the same before you submit a pull request.
 
 Distributed under the terms of the [BSD-3] license,
 "napari-ccp4map" is free and open source software
+
+## Citing napari-ccp4map
+If you find napari-ccp4map useful please cite this repository using its DOI as follows:
+
+    Simon Biberger (2021). napari-ccp4map: a napari plugin to read ccp4 .map files. doi:10.5281/zenodo.3555620
+
+Note this DOI will resolve to all versions of napari-ccp4map. To cite a specific version please find the DOI of that version on our zenodo page. The DOI of the latest version is in the badge at the top of this page.
+
+You can also use the BibTeX below:
+```
+@software{napari-ccp4map,
+  author = {Simon Biberger},
+  title = {Napari-ccp4map},
+  url = {https://github.com/biberger/napari-ccp4map},
+  version = {1.1},
+  doi = {10.5281/zenodo.3555620},
+  date = {2021-10-05},
+}
+```
+If these remarks on citations seem a bit excessive, then you are probably right. I am using this as my test case for another library ([Cestimii](https://github.com/biberger/cestimii)).
 
 ## Issues
 
